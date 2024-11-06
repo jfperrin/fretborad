@@ -1,16 +1,13 @@
-"use client";
-
-import { createFretPositions, createStringPositions } from "@/app/guitar/utils";
-import { useEffect, useState } from "react";
+import isEmpty from "lodash.isempty";
+import { getFretPositions, getStringPositions } from "@/app/guitar/ui/slice";
+import { useSelector } from "react-redux";
 
 export default function Note({ fret, string }) {
-  const [stringPositions, setStringPositions] = useState([]);
-  const [fretPositions, setFretPositions] = useState([]);
+  const fretPositions = useSelector(getFretPositions);
+  const stringPositions = useSelector(getStringPositions);
 
-  useEffect(() => {
-    setStringPositions(createStringPositions());
-    setFretPositions(createFretPositions());
-  }, []);
+  if (isEmpty(fretPositions)) return null;
+  if (isEmpty(stringPositions)) return null;
 
   if (fret === 0)
     return (

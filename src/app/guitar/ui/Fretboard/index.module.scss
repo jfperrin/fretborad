@@ -1,0 +1,14 @@
+.fretboardContainer {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+
+  svg {
+    display: block;
+  }
+
+  .fretboardBackground {
+    background: #402f1f;
+  }
+}
+
